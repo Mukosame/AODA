@@ -8,12 +8,6 @@ It first creates model, dataset, and visualizer given the option.
 It then does standard network training. During the training, it also visualize/save the images, print/save the loss plot, and save models.
 The script supports continue/resume training. Use '--continue_train' to resume your previous training.
 
-Example:
-    Train a CycleGAN model:
-        python train.py --dataroot ./datasets/maps --name maps_cyclegan --model cycle_gan
-    Train a pix2pix model:
-        python train.py --dataroot ./datasets/facades --name facades_pix2pix --model pix2pix --direction BtoA
-
 See options/base_options.py and options/train_options.py for more training options.
 See training and test tips at: https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix/blob/master/docs/tips.md
 See frequently asked questions at: https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix/blob/master/docs/qa.md
@@ -43,7 +37,6 @@ if __name__ == "__main__":
             opt.resume_state, map_location=lambda storage, loc: storage.cuda(
                 device_id)
         )
-        # option.check_resume(opt, resume_state['iter'])  # check resume options
     else:
         resume_state = None
 
@@ -85,6 +78,7 @@ if __name__ == "__main__":
         start_epoch = opt.epoch_count
         # regular setup: load and print networks; create schedulers
         model.setup(opt)
+    # load pretrained model from given path
     if opt.pretrained_path:
         model.load_pretrain_from_path(opt.pretrained_path, opt.epoch)
 
@@ -130,8 +124,6 @@ if __name__ == "__main__":
                 losses = model.get_current_losses()
                 t_comp = (time.time() - iter_start_time) / opt.batch_size
                 t_data = iter_start_time - iter_data_time
-                # visualizer.print_current_losses(epoch, total_iters, losses, t_comp, t_data)
-                # message = '(epoch: %d, iter: %d, time: %.3f, data: %.3f) ' % (epoch, total_iters, t_comp, t_data)
                 message = "(epoch: %d, iter: %d, data: %.3f) " % (
                     epoch,
                     total_iters,

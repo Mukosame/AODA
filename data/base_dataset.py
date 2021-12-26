@@ -91,8 +91,6 @@ def get_transform(
             [
                 transforms.Resize(int(224 / 0.875)),
                 transforms.CenterCrop(224),
-                # transforms.RandomResizedCrop(224),
-                # transforms.RandomHorizontalFlip(),
                 transforms.ToTensor(),
                 normalize,
             ]
@@ -107,7 +105,8 @@ def get_transform(
     elif "scale_width" in opt.preprocess:
         transform_list.append(
             transforms.Lambda(
-                lambda img: __scale_width(img, opt.load_size, opt.crop_size, method)
+                lambda img: __scale_width(
+                    img, opt.load_size, opt.crop_size, method)
             )
         )
 
@@ -123,7 +122,8 @@ def get_transform(
 
     if opt.preprocess == "none":
         transform_list.append(
-            transforms.Lambda(lambda img: __make_power_2(img, base=4, method=method))
+            transforms.Lambda(lambda img: __make_power_2(
+                img, base=4, method=method))
         )
 
     if not opt.no_flip:
@@ -139,7 +139,8 @@ def get_transform(
         if grayscale:
             transform_list += [transforms.Normalize((0.5,), (0.5,))]
         else:
-            transform_list += [transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))]
+            transform_list += [transforms.Normalize(
+                (0.5, 0.5, 0.5), (0.5, 0.5, 0.5))]
     return transforms.Compose(transform_list)
 
 

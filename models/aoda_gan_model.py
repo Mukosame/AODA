@@ -52,7 +52,7 @@ class AODAGANModel(BaseModel):
         return parser
 
     def __init__(self, opt):
-        """Initialize the CycleGAN class.
+        """Initialize the AodaGAN class.
 
         Parameters:
             opt (Option class)-- stores all the experiment flags; needs to be a subclass of BaseOptions
@@ -242,7 +242,6 @@ class AODAGANModel(BaseModel):
     def forward(self):
         """Run forward pass; called by both functions <optimize_parameters> and <test>."""
         self.fake_B = self.netG_A(self.real_A)  # G_A(A)
-        # delme: try to mix the pool
         self.real_B2 = self.real_B.clone()
         if self.isTrain:
             if "aoda" in self.opt.name:  # adopt the random-mixed sampling strategy

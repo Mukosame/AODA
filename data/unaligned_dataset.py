@@ -62,11 +62,7 @@ class UnalignedDataset(BaseDataset):
             A_paths (str)    -- image paths
             B_paths (str)    -- image paths
         """
-        # map the random index into uniform sampling of each classes, delme
-        # if index > (self.A_size / 2):
-        #     index = random.randint(151, 155)
-        # else:
-        #     index = random.randint(0, 150)
+
         # make sure index is within then range
         A_path = self.A_paths[index % self.A_size]
         if self.opt.serial_batches:  # make sure index is within then range

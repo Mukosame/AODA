@@ -3,7 +3,7 @@ from .base_model import BaseModel
 
 
 class TestModel(BaseModel):
-    """This TesteModel can be used to generate CycleGAN results for only one direction.
+    """This TesteModel can be used to generate AodaGAN results for only one direction.
     This model will automatically set '--dataset_mode single', which only loads the images from one collection.
 
     See the test instruction for more details.

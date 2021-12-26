@@ -54,8 +54,8 @@ class BaseOptions:
         parser.add_argument(
             "--model",
             type=str,
-            default="cycle_gan",
-            help="chooses which model to use. [classifier | aoda_gan | cycle_gan | pix2pix | test | colorization]",
+            default="aoda_gan",
+            help="chooses which model to use. [classifier | aoda_gan | test ]",
         )
         parser.add_argument(
             "--input_nc",

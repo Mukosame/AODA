@@ -75,9 +75,6 @@ class Visualizer:
             import visdom
 
             self.ncols = opt.display_ncols
-            # self.vis = visdom.Visdom(server=opt.display_server, port=opt.display_port, env=opt.display_env)
-            # if not self.vis.check_connection():
-            #     self.create_visdom_connections()
 
         if (
             self.use_html
@@ -86,11 +83,6 @@ class Visualizer:
             self.img_dir = os.path.join(self.web_dir, "images")
             print("create web directory %s..." % self.web_dir)
             util.mkdirs([self.web_dir, self.img_dir])
-        # create a logging file to store training losses
-        # self.log_name = os.path.join(opt.checkpoints_dir, opt.name, 'loss_log.txt')
-        # with open(self.log_name, "a") as log_file:
-        #     now = time.strftime("%c")
-        #     log_file.write('================ Training Loss (%s) ================\n' % now)
 
     def reset(self):
         """Reset the self.saved status"""

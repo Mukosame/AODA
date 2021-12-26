@@ -9,11 +9,11 @@ It then runs inference for '--num_test' images and save results to an HTML file.
 
 Example (You need to train models first or download pre-trained models from our website):
     Test an AODA model (one side only):
-        python test.py --dataroot datasets/horse2zebra/testA --name horse2zebra_pretrained --model test --no_dropout
+        python3 test.py --model_suffix _B --dataroot ./scribble_10class/testA --name scribble_aoda --model test --phase test --no_dropout --n_classes 10
 
-    The option '--model test' is used for generating CycleGAN results only for one side.
+    The option '--model test' is used for generating results only for one side.
     This option will automatically set '--dataset_mode single', which only loads the images from one set.
-    On the contrary, using '--model cycle_gan' requires loading and generating results in both directions,
+    On the contrary, using '--model aoda_gan' requires loading and generating results in both directions, and n_classes
     which is sometimes unnecessary. The results will be saved at ./results/.
     Use '--results_dir <directory_path_to_save_result>' to specify the results directory.
 
@@ -55,8 +55,7 @@ if __name__ == '__main__':
     webpage = html.HTML(web_dir, 'Experiment = %s, Phase = %s, Epoch = %s' % (
         opt.name, opt.phase, opt.epoch))
     # test with eval mode. This only affects layers like batchnorm and dropout.
-    # For [pix2pix]: we use batchnorm and dropout in the original pix2pix. You can experiment it with and without eval() mode.
-    # For [CycleGAN]: It should not affect CycleGAN as CycleGAN uses instancenorm without dropout.
+
     if opt.eval:
         model.eval()
     consume_time = []
@@ -66,7 +65,6 @@ if __name__ == '__main__':
         model.set_input(data)  # unpack data from data loader
         start_t = time.time()
         model.test()           # run inference
-        # model.inference()
         end_t = time.time()
         consume_time.append(end_t - start_t)
         visuals = model.get_current_visuals()  # get image results
