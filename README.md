@@ -1,4 +1,4 @@
-# AODA (under construction)
+# AODA
 
 By [Xiaoyu Xiang](https://engineering.purdue.edu/people/xiaoyu.xiang.1), [Ding Liu](https://scholar.google.com/citations?user=PGtHUI0AAAAJ), [Xiao Yang](https://scholar.google.com/citations?user=_MAKSLkAAAAJ&hl=en), [Yiheng Zhu](https://www.etc.cmu.edu/blog/author/yihengz/), [Xiaohui Shen](https://xiaohuishen.github.io/), [Jan P. Allebach](https://engineering.purdue.edu/~allebach/)
 
@@ -11,6 +11,7 @@ This is the official Pytorch implementation of _Adversarial Open Domain Adaptati
 ## Updates
 
 - **Our paper will be presented on WACV-2022 on Jan 5, 19:30 pm GMT-10. Welcome to come and ask questions!**
+- 2021.12.25: Upload all codes. Merry Christmas!
 - 2021.12.21: Update the LICENSE and repo contents.
 - 2021.4.15: Create the repo
 
